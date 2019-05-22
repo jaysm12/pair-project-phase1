@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-const ControllerStudent = require('../controller/controllerStudent')
+const ControllerStudent = require('../controllers/controllerStudent')
 
 router.get('/:id', ControllerStudent.indexGet)
 router.post('/:id', ControllerStudent.indexPost)

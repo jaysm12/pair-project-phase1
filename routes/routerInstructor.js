@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-const ControllerInstructor = require('../controller/controllerInstructor')
+const ControllerInstructor = require('../controllers/controllerInstructor')
 
 router.get('/:id', ControllerInstructor.indexGet)
 router.post('/:id', ControllerInstructor.indexPost)

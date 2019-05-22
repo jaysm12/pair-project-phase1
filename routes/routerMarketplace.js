@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-const ControllerMarketplace = require('../controller/controllerMarketplace')
+const ControllerMarketplace = require('../controllers/controllerMarketplace')
 
 router.get('/', ControllerMarketplace.index)
 
