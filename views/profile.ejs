@@ -27,9 +27,8 @@
       </div>
       <div class="col-md-6 align-items-end">
           <div class="profile-head">
-            <h5>
-                <%= dataInstructor.name %> 
-            </h5>
+            <h5><%= (session.type == 'instructor') ? 'Mpu' : 'Murid' %></h5>
+            <h3><%= dataInstructor.name %></h3>
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item">
                     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
@@ -44,13 +43,17 @@
           </div>
       </div>
       <div class="col-md-2">
-          <a class="btn btn-primary" href='<%= id %>/edit'>Edit Profile</a>
+          <a class="btn btn-primary" href='edit'>Edit Profile</a>
       </div>
   </div>
   <div class="row">
-      <form class="col-md-4">
-        <a role='button' class="btn btn-primary" href='<%= id %>/add-student'>Add to be your Teacher</a>              
-      </form>
+      <% if (session.type != 'instructor') { %>
+        <form class="col-md-4">
+          <a role='button' class="btn btn-primary" href='add-student'>Add to be your Teacher</a>              
+        </form>
+      <% } else { %>
+        <div class='col-md-4'></div>
+      <% } %>
       <div class="col-md-8">
         <div class="tab-content profile-tab" id="myTabContent">
             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
@@ -87,9 +90,13 @@
                 </thead>
                 <tbody>
                   <% dataStudentPending.forEach(oneRecord => { 
-                    Object.values(oneRecord).forEach(oneData => {%>
+                    Object.values(oneRecord).slice(0,-1).forEach(oneData => {%>
                     <th scope='col'><%= oneData %></th>  
                     <% }) %>
+                    <th scope='col'>
+                      <a href='accept-student/<%= oneRecord.id %>' class='btn btn-danger'>Reject</a> |
+                      <a href='reject-student/<%= oneRecord.id %>' class='btn btn-success'>Accept</a>
+                    </th>
                   <% }) %>
                 </tbody>
               </table>

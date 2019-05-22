@@ -6,18 +6,24 @@ class ControllerInstructor {
     let input = {
       title: 'Profile',
       action: 'showData',
-      id: instructorId,
+      session: {
+        id: 10,
+        type: 'instructor'
+      },
       dataInstructor: {
+        id: instructorId,
         name: 'Budi',
         username: 'budi123'
       },
       dataStudentPending: [{
+        id: 1,
         username: 'anto',
         motivasi: 'loremipsum',
         status: 'pending'
       }],
 
       dataStudentAccept: [{
+        id: 2,
         username: 'siapa kamu',
         motivasi: 'loremipsum lerem ipsum dolor et labora',
         status: 'accept'
@@ -34,19 +40,25 @@ class ControllerInstructor {
     let instructorId = req.params.id
     let input = {
       title: 'Profile',
-      action: 'edit',
-      id: instructorId,
+      action: 'showData',
+      session: {
+        id: 10,
+        type: 'instructor'
+      },
       dataInstructor: {
-        nama: 'Budi',
+        id: instructorId,
+        name: 'Budi',
         username: 'budi123'
       },
       dataStudentPending: [{
+        id: 1,
         username: 'anto',
         motivasi: 'loremipsum',
         status: 'pending'
       }],
 
       dataStudentAccept: [{
+        id: 2,
         username: 'siapa kamu',
         motivasi: 'loremipsum lerem ipsum dolor et labora',
         status: 'accept'
