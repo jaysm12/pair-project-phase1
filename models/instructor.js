@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Instructor.associate = function(models) {
     Instructor.hasMany(models.Student)
+    Instructor.belongsToMany(models.Tag, {through: 'InstructorTag'})
   };
   return Instructor;
 };

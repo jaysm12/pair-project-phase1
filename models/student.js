@@ -13,6 +13,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Student.associate = function(models) {
     Student.belongsTo(models.Instructor)
+    Student.belongsToMany(models.Tag, {through: 'StudentTag'})
+
   };
   return Student;
 };
