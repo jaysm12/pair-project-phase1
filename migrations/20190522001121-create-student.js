@@ -27,7 +27,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       phone: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       InstructorId: {
         type: Sequelize.INTEGER,
