@@ -8,13 +8,8 @@ const routerMarketplace = require('./routes/routerMarketplace')
 const routerStudent = require('./routes/routerStudent')
 const routerInstructor = require('./routes/routerInstructor')
 
-<<<<<<< HEAD
 const port = process.env.PORT || 3000
-=======
 const capitalize = require('./helpers/capitalize')
-
-const port = 3000
->>>>>>> robbycp
 
 app.set("view engine", "ejs")
 app.use(express.json());

@@ -64,12 +64,9 @@ class ControllerInstructor {
         return Promise.all([pendingStudent, acceptStudent])
       })
       .then((values) => {
-<<<<<<< HEAD
-=======
         console.log('di profilePagee#################3', input.session);
         console.log('data instruktor',input.dataProfile);
         
->>>>>>> robbycp
         [input.dataStudentPending, input.dataStudentAccept] = values
         return Instructor.findByPk(instructorId, {
           include: {
