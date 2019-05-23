@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-// const session = require('express-session')
+const session = require('express-session')
 
 const routerHome = require('./routes/routerHome')
 const routerAboutus = require('./routes/routerAboutus')
@@ -15,15 +15,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // set session
-// app.set('trust proxy', 1) // trust first proxy
-// app.use(session({
-//   secret: 'keyboard cat',
-//   resave: false,
-//   saveUninitialized: true,
-//   cookie: { 
-//     maxAge: 600000,
-//     secure: true }
-// }))
+app.set('trust proxy', 1) // trust first proxy
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { 
+    maxAge: 600000, 
+  }
+}))
 
 // app.use((req, res, next) => {
 //   if (req.cookies.user_sid && !req.session.user) {

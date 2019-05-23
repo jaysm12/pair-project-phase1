@@ -1,13 +1,15 @@
 const Models = require('../models')
-
+// const bycrpt = require('bcryptjs')
 class ControllerHome {
   static index(req,res) {
     
   }
+
   static loginGet(req,res) {
     let input = {
       title: 'login',
-      session: {}
+      session: null,
+      message: [null, null]
     }
     res.render('login', input)
   }
@@ -16,20 +18,33 @@ class ControllerHome {
     let username = req.body.username
     let password = req.body.password
     let userType = req.body.userType
-    console.log(userType);
     let Model = (userType == 'instructor') ? Models.Instructor : (userType == 'student') ? Models.Student : null
-    Model.findOne({ where: { username: username } }).then(function (user) {
-      if (!user) {
-        input.message = ['warning', 'Username not found in our database']
-        res.render('login', input);
-      } else if (user.password !== password) {
-        input.message = ['warning', 'Invalid Password']
-        res.redirect('/login');
-      } else {
-        req.session.user = user.dataValues;
-        res.redirect('/dashboard');
-      }
-    });
+    Model.findOne({ raw:true, where: { username: username } })
+      .then((user) => {
+        let input = {
+          title: 'login',
+          session: {}
+        }
+        if (!user) {
+          input.message = ['warning', 'Username not found in our database']
+          res.render('login', input);
+          // bcrypt.compareSync("B4c0/\/", hash);
+        } else if (user.password !== password) {
+          input.message = ['warning', 'Invalid Password']
+          res.redirect('/login');
+        } else {
+          req.session.user = {
+            userId: user.id,
+            userType: userType,
+          };
+          let url = `/${userType}/${user.id}`
+          res.redirect(url);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        res.send(err)
+      })
             
   }
 

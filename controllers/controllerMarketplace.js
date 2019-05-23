@@ -3,59 +3,23 @@ const Models = require('../models')
 class ControllerMarketplace {
   static index(req,res) {
     let input = {
-      title: 'Profile',
-      action: 'showData',
-      dataInstructor: {
-        name: 'Budi',
-        username: 'budi123'
-      },
-      session: {
-        id: 10,
-        type: 'instructor'
-      },
-      dataInstructor: [{
-        id: 4,
-        username: 'anto',
-        background: 'loremipsum el dolor el passio fergussso',
-        price: 1000000
-      },{
-        id: 4,
-        username: 'anto',
-        background: 'loremipsum el dolor el passio fergussso',
-        price: 1000000
-      },{
-        id: 4,
-        username: 'anto',
-        background: 'loremipsum el dolor el passio fergussso',
-        price: 1000000
-      },{
-        id: 4,
-        username: 'anto',
-        background: 'loremipsum el dolor el passio fergussso',
-        price: 1000000
-      },{
-        id: 4,
-        username: 'anto',
-        background: 'loremipsum el dolor el passio fergussso',
-        price: 1000000
-      },{
-        id: 4,
-        username: 'anto',
-        background: 'loremipsum el dolor el passio fergussso',
-        price: 1000000
-      },{
-        id: 4,
-        username: 'anto',
-        background: 'loremipsum el dolor el passio fergussso',
-        price: 1000000
-      },{
-        id: 4,
-        username: 'anto',
-        background: 'loremipsum el dolor el passio fergussso',
-        price: 1000000
-      },]
+      title: 'Marketplacec',
+      session: req.session.user,
+      dataInstructor: []
     }
-    res.render('marketplace', input)
+    Models.Instructor.findAll({
+      raw: true,
+      attributes: ['id', 'name', 'background', 'price']
+    })
+      .then((teachers) => {
+        input.dataInstructor = teachers
+        res.render('marketplace', input)
+      })
+      .catch((err) => {
+        console.log(err);
+        res.send(err)
+      })
+    
   }
 }
 

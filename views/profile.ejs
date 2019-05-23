@@ -17,95 +17,20 @@
   </style>
 </head>
 <body>
-  <%- include('./partials/navbar.ejs') %>
-  <div class="container main emp-profile">
-    <div class="row">
-      <div class="col-md-4">
-          <div class="profile-img">
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
-          </div>
-      </div>
-      <div class="col-md-6 align-items-end">
-          <div class="profile-head">
-            <h5><%= (session.type == 'instructor') ? 'Mpu' : 'Murid' %></h5>
-            <h3><%= dataInstructor.name %></h3>
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                <li class="nav-item">
-                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="accStudentTab" data-toggle="tab" href="#acceptedStudent" role="tab" aria-controls="profile" aria-selected="false">Accepted Student</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="pendingStudentTab" data-toggle="tab" href="#pendingStudent" role="tab" aria-controls="profile" aria-selected="false">Pending Student</a>
-                </li>
-            </ul>
-          </div>
-      </div>
-      <div class="col-md-2">
-          <a class="btn btn-primary" href='edit'>Edit Profile</a>
-      </div>
-  </div>
-  <div class="row">
-      <% if (session.type != 'instructor') { %>
-        <form class="col-md-4">
-          <a role='button' class="btn btn-primary" href='add-student'>Add to be your Teacher</a>              
-        </form>
-      <% } else { %>
-        <div class='col-md-4'></div>
-      <% } %>
-      <div class="col-md-8">
-        <div class="tab-content profile-tab" id="myTabContent">
-            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-              <% if (action == 'edit') { %>
-                <%- include('./partials/editData.ejs') %>
-              <% } else if (action == 'showData') { %>
-                <form action='' method="POST">
-                <%- include('./partials/showData.ejs')%>
-                </form>
-              <% } %>
-            </div>
-            <div class="tab-pane fade" id="acceptedStudent" role="tabpanel" aria-labelledby="accStudentTab">
-              <table class='table'>
-                <thead>
-                  <% Object.keys(dataStudentAccept[0]).forEach(key => { %>
-                    <th scope='col'><%= key %></th>  
-                  <% }) %>
-                </thead>
-                <tbody>
-                  <% dataStudentAccept.forEach(oneRecord => { 
-                    Object.values(oneRecord).forEach(oneData => {%>
-                    <th scope='col'><%= oneData %></th>  
-                    <% }) %>
-                  <% }) %>
-                </tbody>
-              </table>
-            </div>
-            <div class="tab-pane fade" id="pendingStudent" role="tabpanel" aria-labelledby="pendingStudentTab">
-              <table class='table'>
-                <thead>
-                  <% Object.keys(dataStudentPending[0]).forEach(key => { %>
-                    <th scope='col'><%= key %></th>  
-                  <% }) %>
-                </thead>
-                <tbody>
-                  <% dataStudentPending.forEach(oneRecord => { 
-                    Object.values(oneRecord).slice(0,-1).forEach(oneData => {%>
-                    <th scope='col'><%= oneData %></th>  
-                    <% }) %>
-                    <th scope='col'>
-                      <a href='accept-student/<%= oneRecord.id %>' class='btn btn-danger'>Reject</a> |
-                      <a href='reject-student/<%= oneRecord.id %>' class='btn btn-success'>Accept</a>
-                    </th>
-                  <% }) %>
-                </tbody>
-              </table>
-            </div>
-          </div>
-      </div>
-    </div>          
-  </div>
-  <%- include('./partials/footer.ejs') %>
+  <%- include('./partials/navbar') %>
+
+  <% if (type == 'instructor') { %>
+    <%- include('./partials/profileInstructor') %>
+  <% } else if (type == 'student') { %>
+    <%- include('/partials/profileStudent') %>  
+  <% } %>
+
+  <%- include('./partials/footer') %>
+  <script>
+    function confirmation(input) {
+      confirm(`Are you sure you want to ${input.command} ${input.name}`)
+    }
+  </script>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
