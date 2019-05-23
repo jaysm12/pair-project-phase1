@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+    <%- include('./partials/navBar.ejs') %>
+  <form action="/register/students">
+    <label for="username">username</label>
+    <input type="text" name="username" value="username" required>
+    <label for="email">Email</label>
+    <input type="text" name="email" value="email" required>
+    <label for="password">password</label>
+    <input type="password" name="password" value="password" required>
+    <label for="name">Name</label>
+    <input type="text" name="name" value="Nama lengkap kamu" required>
+    <label for="birthday">Birthday</label>
+    <input type="date" name="birthdate">
+    <label for="motivation">Motivation</label>
+    <input type="text" name="motivation" value="Motivasi belajarmu (optional)">
+  </form>
+</body>
+</html>
