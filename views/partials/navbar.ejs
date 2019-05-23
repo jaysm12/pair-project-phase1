@@ -17,7 +17,7 @@
       </li>
       <% if (session) { %>
         <li class="nav-item">
-          <a class="nav-link" href="/<%= session.type %>/<%= session.id %>">My Profile</a>
+          <a class="nav-link" href="/<%= session.userType %>/<%= session.userId %>">My Profile</a>
         </li>
        <% } else { %>
         <li class="nav-item">

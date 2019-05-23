@@ -1,11 +1,11 @@
+<form action='/<%= session.userType %>/<%= session.userId %>/edit' method='POST'>
 <% Object.keys(dataInstructor).forEach((key) => { %>
-  <form class="row">
-    <div class="col form-group row">
-      <label for="inputEmail3" class="col-4 col-form-label"><%= key %></label>
-      <div class="col-8 ">
-        <input type="email" class="form-control" name="<%= key %>" value="<%= dataInstructor[key]%>">
-      </div>
+  <div class="col form-group row">
+    <label for="inputEmail3" class="col-4 col-form-label"><%= key %></label>
+    <div class="col-8 ">
+      <input type="text" class="form-control" name="<%= key %>" value="<%= dataInstructor[key]%>">
     </div>
-  </form>
+  </div>
 <% }) %>
-<input type='submit' class="btn btn-primary" value="Submit">
+  <input type='submit' class="btn btn-primary" value="Submit">
+</form>
