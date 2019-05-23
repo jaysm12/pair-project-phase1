@@ -19,11 +19,8 @@
   },
   "homepage": "https://github.com/jaysm12/pair-project-phase1#readme",
   "dependencies": {
-<<<<<<< HEAD
     "bcryptjs": "^2.4.3",
-=======
     "@sendgrid/mail": "^6.4.0",
->>>>>>> robbycp
     "bootstrap": "^4.3.1",
     "dotenv": "^8.0.0",
     "ejs": "^2.6.1",

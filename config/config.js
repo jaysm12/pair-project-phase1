@@ -2,8 +2,8 @@ require('dotenv').config({ silent: process.env.NODE_ENV === 'production' });
 
 module.exports = {
   "development": {
-    "username": "postgres",
-    "password": "richeese",
+    "username": "robbycp",
+    "password": "robbycp",
     "database": "db_pair_project",
     "host": "127.0.0.1",
     "dialect": "postgres"
