@@ -1,4 +1,6 @@
 'use strict';
+var bcrypt = require('bcryptjs');
+
 module.exports = (sequelize, DataTypes) => {
   const Student = sequelize.define('Student', {
     username: DataTypes.STRING,
@@ -16,5 +18,12 @@ module.exports = (sequelize, DataTypes) => {
     Student.belongsToMany(models.Tag, {through: 'StudentTag'})
 
   };
+
+  Student.addHook('beforeSave', 'encryptPassword', (user, option) => {
+    var salt = bcrypt.genSaltSync(10);
+    var hash = bcrypt.hashSync(user.password, salt);
+    user.password = hash
+  })
+
   return Student;
 };

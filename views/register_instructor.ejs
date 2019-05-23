@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <style>
-  body {
+ body {
     margin: 0;
     padding: 0;
     display: flex;
@@ -57,9 +57,9 @@
   }
 </style>
 <body>
-  <%- include('./partials/navBar.ejs', {session:null}) %>
+    <%- include('./partials/navBar.ejs', {session:null}) %>
   <div class="form">
-    <form action="/student/register" method="POST" >
+    <form action="/instructor/register" method="POST">
       <label for="username">Username</label>
       <input type="text" name="username" placeholder="username" required>
       <label for="email">Email</label>
@@ -67,11 +67,13 @@
       <label for="password">Password</label>
       <input type="password" name="password" placeholder="password" required>
       <label for="name">Name</label>
-      <input type="text" name="name" placeholder="Nama lengkap" required>
+      <input type="text" name="name" placeholder="Nama lengkap kamu" required>
       <label for="birthday">Birthday</label>
       <input type="date" name="birthday">
-      <label for="motivation">Motivation</label>
-      <input style="height:150px; width: 300px;" type="text" name="motivation" placeholder="Motivasi belajarmu">
+      <label for="price">Price</label>
+      <input type="number" style="width: 300px; padding: 7px; border-radius: 5px;" name="price" placeholder="Harga tiap sesi mengajar">
+      <label for="background">Background</label>
+      <input style="height:50px; width: 300px;" type="text" name="background" placeholder="Background">
       <p>Mata pelajaran: </p>
       <div class="tag">
         <% tags.forEach(tag => { %>

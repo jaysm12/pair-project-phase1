@@ -13,7 +13,7 @@
     padding: 0;
   }
   body {
-    display: flex;
+    display: flex;  
     flex-direction: column;
   }
   .buttonInstruktur {
@@ -21,7 +21,7 @@
     margin-bottom: 60px;
   }
   .buttonBack {
-    margin-top: 20px;
+    margin-top: 70px;
     margin-bottom: 60px;
   }
   .jumbotron {
@@ -29,7 +29,7 @@
   }
 </style>
 <body>
-    
+  <%- include('./partials/navBar.ejs', {session:null}) %>
   <div class="jumbotron">
     <div class="buttonBack">
       <a class="btn btn-primary bg-danger " href="/" role="button">Kembali</a>
@@ -38,12 +38,12 @@
     <p class="lead"></p>
     <hr class="my-4">
     <div class="buttonStudent">
-      <p>Mendaftar di Mpu Koding memiliki banyak benefit selain mendapatkan ilmu sesuai yang kamu inginkan.</p>
-      <a class="btn btn-primary btn-lg" href="/register/students" role="button">Daftar Student</a>
+      <p>Mendaftar sebagai murid.</p>
+      <a class="btn btn-primary btn-lg" href="/student/register" role="button">Daftar Murid</a>
     </div>
     <div class="buttonInstruktur">
       <p>Untuk calon - calon instruktur.</p>
-      <a class="btn btn-primary btn-lg" href="/register/instructor" role="button">Daftar instruktur</a>
+      <a class="btn btn-primary btn-lg" href="/instructor/register" role="button">Daftar Instruktur</a>
     </div>
     
   </div>

@@ -18,7 +18,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       birthday: {
-        type: Sequelize.STRING
+        type: Sequelize.DATEONLY
       },
       motivation: {
         type: Sequelize.STRING
