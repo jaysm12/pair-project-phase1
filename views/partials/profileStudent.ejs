@@ -7,87 +7,54 @@
     </div>
     <div class="col-md-6 align-items-end">
       <div class="profile-head">
-        <h5>Mpu</h5>
-        <h3><%= dataInstructor.name %></h3>
+        <h5>Murid</h5>
+        <h3><%= dataProfile.name %></h3>
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">
                 <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="accStudentTab" data-toggle="tab" href="#acceptedStudent" role="tab" aria-controls="profile" aria-selected="false">Accepted Student</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="pendingStudentTab" data-toggle="tab" href="#pendingStudent" role="tab" aria-controls="profile" aria-selected="false">Pending Student</a>
+                <a class="nav-link" id="dataMpu-tab" data-toggle="tab" href="#dataMpu" role="tab" aria-controls="profile" aria-selected="false">Mpu Profile</a>
             </li>
         </ul>
       </div>
     </div>
     <div class="col-md-2">
-        <a class="btn btn-primary" href='edit'>Edit Profile</a>
+      <% if (session) { %>
+        <% if(session.userId == dataProfile.id) { %>
+          <a class="btn btn-primary" href='/student/<%= dataProfile.id %>/edit'>Edit Profile</a>
+        <% } %>
+      <% } %>
     </div>
   </div>
   <div class="row">
-    <% if (session) {
-        if (session.type != 'instructor') { %>
-      <form class="col-md-4">
-        <a role='button' class="btn btn-primary" href='add-student'>Add to be your Teacher</a>              
-      </form>
-      <% } else { %>
-        <div class='col-md-4'></div>
-      <% } %>
-    <% } else { %>
-      <div class='col-md-4'></div>
-    <% } %>
+    <div class="col-md-4"></div>
     <div class="col-md-8">
       <div class="tab-content profile-tab" id="myTabContent">
           <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
             <% if (action == 'edit') { %>
-              <%- include('./partials/editData.ejs') %>
+              <%- include('./editData.ejs') %>
             <% } else if (action == 'showData') { %>
               <form action='' method="POST">
-              <%- include('./partials/showData.ejs')%>
+              <%- include('./showData.ejs')%>
               </form>
             <% } %>
           </div>
-          <div class="tab-pane fade" id="acceptedStudent" role="tabpanel" aria-labelledby="accStudentTab">
-            <table class='table'>
-              <thead>
-                <% headerStudent.forEach(key => { %>
-                  <th scope='col'><%= key %></th>  
-                <% }) %>
-              </thead>
-              <% if (dataStudentAccept.length != 0) { %>
-                <tbody>
-                  <% dataStudentAccept.forEach(oneRecord => { 
-                    Object.values(oneRecord).forEach(oneData => {%>
-                    <th scope='col'><%= oneData %></th>  
-                    <% }) %>
-                  <% }) %>
-                </tbody>
-              <% } %>
-            </table>
-          </div>
-          <div class="tab-pane fade" id="pendingStudent" role="tabpanel" aria-labelledby="pendingStudentTab">
-            <table class='table'>
-              <thead>
-                <% headerStudent.forEach(key => { %>
-                  <th scope='col'><%= key %></th>  
-                <% }) %>
-              </thead>
-              <% if (dataStudentPending.length != 0) { %>
-                <tbody>
-                  <% dataStudentPending.forEach(oneRecord => { 
-                    Object.values(oneRecord).slice(0,-1).forEach(oneData => {%>
-                    <th scope='col'><%= oneData %></th>  
-                    <% }) %>
-                    <th scope='col'>
-                      <a href='accept-student/<%= oneRecord.id %>' class='btn btn-danger'>Reject</a> |
-                      <a href='reject-student/<%= oneRecord.id %>' class='btn btn-success'>Accept</a>
-                    </th>
-                  <% }) %>
-                </tbody>
-              <% } %>
-            </table>
+          <div class="tab-pane fade" id="dataMpu" role="tabpanel" aria-labelledby="dataMpu-tab">
+            <% if (dataMpu) { %>
+              <% Object.keys(dataMpu).forEach((key) => { %>
+                <div class="row">
+                  <div class="col-md-4">
+                      <label><%= key %></label> <!-- instructor.key -->
+                  </div>
+                  <div class="col-md-8">
+                      <p><%= dataMpu[key] %></p> <!-- instructor.username -->
+                  </div>
+                </div>
+              <% }) %>
+            <% } else { %> 
+              <p>This account have no Mpu</p>
+            <% } %>
           </div>
         </div>
     </div>

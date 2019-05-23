@@ -9,9 +9,16 @@ class ControllerMarketplace {
     }
     Models.Instructor.findAll({
       raw: true,
-      attributes: ['id', 'name', 'background', 'price']
+      attributes: ['id', 'name', 'background', 'price'],
+      include: [{
+        model: Models.Tag,
+        attributes: ['name'],
+        through: 'InstructorTag'
+      }]
     })
       .then((teachers) => {
+        console.log(teachers);
+        
         input.dataInstructor = teachers
         res.render('marketplace', input)
       })
