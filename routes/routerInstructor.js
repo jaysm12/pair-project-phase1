@@ -7,6 +7,8 @@ router.get('/register', ControllerInstructor.registerGet)
 router.post('/register', ControllerInstructor.registerPost)
 router.get('/:id', ControllerInstructor.indexGet)
 router.post('/:id', ControllerInstructor.indexPost)
+router.post('/:id/accept-student/:studentId', ControllerInstructor.acceptGet)
+router.post('/:id/reject-student/:studentId', ControllerInstructor.rejectGet)
 router.get('/:id/edit', ControllerInstructor.editGet)
 router.post('/:id/edit', ControllerInstructor.editPost)
 
