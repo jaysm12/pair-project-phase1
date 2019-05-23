@@ -1,9 +1,9 @@
 <form action='/<%= session.userType %>/<%= session.userId %>/edit' method='POST'>
-<% Object.keys(dataInstructor).forEach((key) => { %>
+<% Object.keys(dataProfile).slice(1).forEach((key) => { %>
   <div class="col form-group row">
     <label for="inputEmail3" class="col-4 col-form-label"><%= key %></label>
     <div class="col-8 ">
-      <input type="text" class="form-control" name="<%= key %>" value="<%= dataInstructor[key]%>">
+      <input type="text" class="form-control" name="<%= key %>" value="<%= dataProfile[key]%>">
     </div>
   </div>
 <% }) %>

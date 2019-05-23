@@ -13,6 +13,7 @@
     }
     .main {
       padding-top: 100px;
+      height: 100vh;
     }
   </style>
 </head>
@@ -22,7 +23,7 @@
   <% if (type == 'instructor') { %>
     <%- include('./partials/profileInstructor') %>
   <% } else if (type == 'student') { %>
-    <%- include('/partials/profileStudent') %>  
+    <%- include('./partials/profileStudent') %>  
   <% } %>
 
   <%- include('./partials/footer') %>
