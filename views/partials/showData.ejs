@@ -1,0 +1,10 @@
+<% Object.keys(dataInstructor).forEach((key) => { %>
+  <div class="row">
+    <div class="col-md-6">
+        <label><%= key %></label> <!-- instructor.key -->
+    </div>
+    <div class="col-md-6">
+        <p><%= dataInstructor[key] %></p> <!-- instructor.username -->
+    </div>
+  </div>
+<% }) %>

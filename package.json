@@ -23,6 +23,7 @@
     "express": "^4.17.0",
     "faker": "^4.1.0",
     "jquery": "^3.4.1",
+    "express-session": "^1.16.1",
     "pg": "^7.11.0",
     "popper.js": "^1.15.0",
     "random-birthday": "^1.0.1",
