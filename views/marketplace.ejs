@@ -26,7 +26,7 @@
     <div id='search-bar'></div>
     <div class='container row' id='gurus'>
       <% dataInstructor.forEach(oneRecord => {  %>
-        <div id='guru' class='col'>
+        <div id='guru' class='col my-4'>
           <div class="card text-center container" style="width: 18rem;">
             <a href='/instructor/<%= oneRecord.id %>'><img class="card-img-top" src="#" alt="Card image cap"></a>
             <% let data = Object.values(oneRecord).slice(1) %>

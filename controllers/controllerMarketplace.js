@@ -7,14 +7,10 @@ class ControllerMarketplace {
       session: req.session.user,
       dataInstructor: []
     }
+
     Models.Instructor.findAll({
       raw: true,
       attributes: ['id', 'name', 'background', 'price'],
-      include: [{
-        model: Models.Tag,
-        attributes: ['name'],
-        through: 'InstructorTag'
-      }]
     })
       .then((teachers) => {
         console.log(teachers);

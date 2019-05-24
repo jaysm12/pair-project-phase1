@@ -27,16 +27,41 @@
     flex-direction: column;
   }
   .main {
-    height: 100vh;
+    height: 100%;
   }
 </style>
 <body>
   <%- include('./partials/navbar.ejs') %>
-  <div class="jumbotron main">
-    <h1 class="display-4">Belajar Koding, bersama para Mpu!</h1>
-    <p class="lead">Belajar koding dengan ahli koding yang telah memiliki pengalaman lebih dari 10 tahun secara privat.</p>
-    <hr class="my-4">
-    <a class="btn btn-primary btn-lg" href="/aboutus" role="button">Learn more</a>
+  <div class='main'>
+    <div class='col-md-8 justify-item-center container text-center'>
+      <div class='my-5' id='cerita'>
+        <h3>Kami yang terbaik</h4>
+        <h5>Berdiri sejak 2012, kami menghadirkan sebuah platform yang mempertemukan antara master koding atau Mpu Jaman Millenial, dengan para milenial yang ingin belajar tentang software engineer atau menjadi seorang developer secara privat. Para Mpu yang ada di platform ini memiliki pengalaman minimal 10 tahun, lebih dari 1000 Mpu yang dapat kamu pilih.</h5>
+      </div>
+      <div class='my-5' id='founder'>
+        <h3>Para Founder Mpu Koding</h3>
+        <div class='row'>
+          <div class="card container" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+              <p class='card-title'>Founder</p>
+              <p class='card-text'>Jays</p>
+            </div>
+          </div>
+          <div class="card container" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+              <p class='card-title'>Founder</p>
+              <p class='card-text'>Robby Caesar Putra</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id='contactUs'>
+        <p>Email : admin@mpu.com</p>
+        <p>Phone : 02123456</p>
+      </div>
+    </div>
   </div>
   <%- include('./partials/footer.ejs') %>
 </body>

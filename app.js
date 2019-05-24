@@ -3,7 +3,6 @@ const app = express()
 const session = require('express-session')
 
 const routerHome = require('./routes/routerHome')
-const routerAboutus = require('./routes/routerAboutus')
 const routerMarketplace = require('./routes/routerMarketplace')
 const routerStudent = require('./routes/routerStudent')
 const routerInstructor = require('./routes/routerInstructor')
@@ -27,8 +26,6 @@ app.use(session({
 }))
 
 app.use('/', routerHome)
-app.use('/instructor', routerInstructor)
-app.use('/aboutus', routerAboutus)
 app.use('/marketplace', routerMarketplace)
 
 app.use((req, res, next) => {
@@ -37,6 +34,7 @@ app.use((req, res, next) => {
 })
 
 app.use('/student', routerStudent)
+app.use('/instructor', routerInstructor)
 
 app.get('/*', (req, res) => {
   res.render('error')

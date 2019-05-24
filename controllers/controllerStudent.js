@@ -17,7 +17,7 @@ class ControllerStudent {
     Models.Student.findOne({
         raw: true,
         attributes: {
-          exclude: ['password', 'createdAt', 'updatedAt']
+          exclude: ['password', 'createdAt', 'updatedAt', 'accept_status']
         }, 
         where: {
           id: studentId
@@ -102,7 +102,8 @@ class ControllerStudent {
     Models.Tag.findAll({raw: true})
     .then(tags => {
       res.render('register_student.ejs', {
-        tags: tags
+        tags: tags,
+        session: null
       })
     })
   }
@@ -135,7 +136,7 @@ class ControllerStudent {
       return Promise.all(promises)
     }))
     .then(() => {
-      res.render('success_register')
+      res.render('success_register', {session: null})
     })
   }
 }

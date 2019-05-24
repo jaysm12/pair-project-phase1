@@ -6,6 +6,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   InstructorTag.associate = function(models) {
     // associations can be defined here
+    InstructorTag.belongsTo(models.Instructor)
+    InstructorTag.belongsTo(models.Tag)
   };
   return InstructorTag;
 };
