@@ -87,10 +87,6 @@ class ControllerInstructor {
       })
   }
 
-  static indexPost(req,res) {
-
-  }
-
   static editGet(req,res) {
     let instructorId = req.params.id
     let input = {
@@ -134,12 +130,15 @@ class ControllerInstructor {
     Models.Tag.findAll({raw: true})
     .then(tags => {
       res.render('register_instructor.ejs', {
-        tags: tags
+        tags: tags,
+        session: null
       })
     })
   }
 
   static registerPost(req,res) {
+    console.log(req.body);
+    
     Instructor.create({
       username: req.body.username,
       password: req.body.password,
@@ -168,7 +167,7 @@ class ControllerInstructor {
       return Promise.all(promises)
     }))
     .then(() => {
-      res.render('success_register')
+      res.render('success_register', {session: null})
     })
   }
 
