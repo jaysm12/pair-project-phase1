@@ -38,7 +38,7 @@
       <form class="col-md-4">
         <% if (session) { %>
           <% if (session.userType !== 'instructor') { %>
-          <a role='button' class="btn btn-primary" href='add-student'>Add to be your Teacher</a>              
+          <a role='button' class="btn btn-primary" href='/instructor/<%= dataProfile.id %>/add-student/<%= session.userId %>'>Add to be your Teacher</a>              
           <% } %>
         <% } %>
           <ul>
